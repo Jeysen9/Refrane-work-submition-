@@ -1,5 +1,5 @@
-# RecruitFlow — UI Presentation
-
+# RecruitFlow — UI v2
+    
 **RecruitFlow by Refrane** | Standalone HTML, CSS and JavaScript interface concept.
 
 This presentation package redesigns the visual presentation of RecruitFlow while carrying forward the primary user-facing pages and workflow families found in the supplied **actual RecruitFlow system** (`RecruitFlow fixed inc (3).zip`). It is **not a replacement build of the live React/Supabase application**. It contains fictional candidates, campaigns, companies and analytics records for stakeholder review. It does not connect to the original backend, authenticate an actual user, publish job vacancies, send invitations, charge money, or perform real AI evaluations.
