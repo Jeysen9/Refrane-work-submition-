@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f4f7fc" />
+  <meta name="description" content="RecruitFlow by Refrane: candidate and recruiter workspace UI presentation." />
+  <title>RecruitFlow — by Refrane</title>
+  <link rel="icon" href="assets/recruitflow-logo.png" type="image/png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="boot-screen" id="bootScreen" aria-live="polite">
+    <div class="boot-content">
+      <img class="boot-logo" src="assets/recruitflow-logo.png" alt="Company logo" />
+      <div class="boot-wordmark">RecruitFlow</div>
+      <div class="boot-caption">by Refrane · People, connected.</div>
+      <div class="loader-track"><span></span></div>
+    </div>
+  </div>
+
+  <div id="app" class="app-root" aria-live="polite"></div>
+  <div id="toastRegion" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script src="app.js"></script>
+</body>
+</html>
