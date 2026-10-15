@@ -1,0 +1,168 @@
+/* RECRUITFLOW OS 2.3 — focused finishing layer.
+   Visual values only: existing sections, product demo, calendar and workflows stay intact. */
+:root { --font-editorial: 'Plus Jakarta Sans', 'DM Sans', 'Avenir Next', sans-serif; }
+
+/* A genuinely centred navigation pill with independent left and right anchors. */
+@media (min-width: 901px) {
+  .site-header__inner { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); gap: 28px; }
+  .site-header__inner > .brand-lockup { justify-self: start; }
+  .site-header__inner > .desktop-nav { justify-self: center; }
+  .site-header__inner > .header-cta { justify-self: end; }
+}
+.site-header .brand-lockup__wordmark { font-size: 21px!important; }
+.brand-lockup__text { gap: 0; }
+
+/* Cleaner hierarchy: serif-like editorial rhythm without sacrificing crisp UI labels. */
+.hero-description,.section-heading > p,.page-hero > p,.problem-copy > p,
+.feature-card > p,.feature-detail__copy > p,.case-story__narrative p,
+.pricing-final-cta p,.stories-demo__copy p,.testimonial-card blockquote,
+.additional-feature p,.closing-cta p,.booking-section__intro p,.plan-card__intro h3 {
+  font-family: var(--font-editorial);
+  font-weight: 450;
+  letter-spacing: -.012em;
+}
+.section-heading > p,.page-hero > p { color: #b8c9e1; line-height: 1.82; }
+.problem-copy > p,.case-story__narrative p { color: #b1c5df; }
+.feature-card > p { color: #baccdf; }
+.testimonial-card blockquote { color: #d0d9eb; }
+.section-heading .eyebrow { color: #8ed5ff; }
+.demo-section .eyebrow,.core-feature-section .eyebrow { color: #b5a4ff; }
+.testimonials-section .eyebrow,.case-stories .eyebrow { color: #80e4d5; }
+.pricing-faq .eyebrow,.team-structure .eyebrow { color: #c8a8ff; }
+.feature-card:nth-child(3n+2) > p,.additional-feature:nth-child(3n+2) p { color: #c1b7e4; }
+.feature-card:nth-child(3n+3) > p,.additional-feature:nth-child(3n+3) p { color: #a8dcd9; }
+.story-label { color: #80e1de; }
+.case-story:nth-child(even) .story-label { color: #b9a1fc; }
+
+/* Story review marks are placed in the upper-right corner, not in the quote flow. */
+.case-story__visual { display:flex; flex-direction:column; align-items:flex-end; flex:0 0 auto; gap:12px; }
+.case-story__stars,.testimonial-card__stars {
+  font: 700 clamp(16px,1.65vw,21px)/1 var(--font-body);
+  letter-spacing: .17em;
+  color: #ffca69;
+  text-shadow: 0 0 22px rgba(255,174,61,.19);
+  white-space: nowrap;
+}
+.case-story__visual .case-story__logo { display:block; }
+.testimonial-card__stars { position:absolute; top:25px; right:25px; font-size:16px; z-index:2; }
+.testimonial-card__quote-mark { padding-right:95px; }
+
+/* Hero layout: one text zone above one artwork zone. Neither is allowed to cross the other. */
+.hero-stage { isolation: isolate; }
+.hero-copy { z-index: 9; width:min(100%,1140px); padding-top:clamp(27px,4.7vh,49px); }
+.hero-copy h1 { margin-top: 24px; line-height: 1.09; letter-spacing:-.07em; font-size:clamp(2.65rem,5vw,4.45rem); text-wrap:balance; }
+.hero-copy > .hero-description {
+  width: min(100%,730px); max-width:730px;
+  margin:26px auto 0; color:#bbcce5;
+  font-size:clamp(.96rem,1.2vw,1.08rem); line-height:1.85;
+  text-wrap:pretty;
+}
+.hero-description span { color:#8bd5ff; font-weight:650; }
+.hero-description em { color:#e1d6ff; font-style:normal; font-weight:650; }
+.hero-scene { top:56%; height:41%; min-height:245px; }
+.hero-logo-depth { top:29%; left:50%; width:clamp(185px,19vw,255px); }
+.hero-light { top:29%; }
+.hero-ui--candidate { top: 8%; }
+.hero-ui--shortlist { top: 15%; }
+.hero-primary-cta { bottom:clamp(20px,3.8vh,39px)!important; }
+.hero-bottom-meta { bottom:9px; }
+.hero-scroll-note { display:none; }
+.hero-emblem-watermark { opacity:.024; }
+/* When screen height is short, use a taller theatre instead of crushing content together. */
+@media (min-width: 901px) and (max-height: 750px) {
+  .hero-stage { min-height: 730px; }
+  .hero-scene { top:53%; }
+  .hero-primary-cta { bottom:27px!important; }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .hero-copy h1 { font-size:clamp(2.55rem,5vw,3.5rem); }
+  .hero-scene { top:55%; }
+  .hero-logo-depth { width:clamp(170px,19vw,210px); }
+  .hero-ui--candidate { left:0; }
+  .hero-ui--shortlist { right:0; }
+}
+@media (max-width:900px) {
+  .hero-copy > .hero-description { max-width:580px; }
+  .hero-scene { top:55%; height:38%; }
+  .hero-logo-depth { top:32%; width:185px; }
+}
+@media (max-width:760px) {
+  .hero-stage { height:840px!important; min-height:840px!important; }
+  .hero-copy { padding-top:24px; }
+  .hero-copy h1 { font-size:clamp(2.1rem,8.1vw,3.05rem); line-height:1.12; letter-spacing:-.06em; margin-top:19px; }
+  .hero-copy > .hero-description { max-width:520px; padding-inline:8px; margin-top:20px; font-size:clamp(12px,3.15vw,14px); line-height:1.75; }
+  .hero-scene { top:48%; height:38%; min-height:290px; }
+  .hero-logo-depth { top:34%; left:53%; width:clamp(148px,31vw,180px); }
+  .hero-ui--candidate { top:6%; }
+  .hero-ui--shortlist { top:46%; }
+  .hero-primary-cta { bottom:56px!important; }
+  .hero-bottom-meta { bottom:12px; }
+}
+@media (max-width:480px) {
+  .hero-stage { height:860px!important; min-height:860px!important; }
+  .hero-copy h1 { font-size:clamp(2rem,8.4vw,2.55rem); }
+  .hero-copy > .hero-description { max-width:350px; }
+  .hero-scene { top:54%; height:37%; }
+  .hero-ui--candidate { width:min(200px,54%); left:0; }
+  .hero-ui--shortlist { width:min(207px,54%); right:0; top:38%; }
+  .hero-logo-depth { top:34%; left:59%; width:clamp(150px,41vw,175px); }
+  .hero-primary-cta { bottom:62px!important; }
+  .case-story__visual { gap:7px; }
+  .case-story__stars { font-size:17px; letter-spacing:.11em; }
+  .testimonial-card__stars { top:22px; right:19px; letter-spacing:.1em; }
+}
+
+/* Version 2.0 logo handoff: a real FLIP-style flight ends exactly on the 3D hero mark. */
+.cinematic-intro__progress i { animation-duration:4.35s; }
+.cinematic-intro--leaving { animation:introLeave 1.04s cubic-bezier(.4,0,.2,1) forwards; }
+.cinematic-intro--leaving .cinematic-intro__content > :not(.cinematic-intro__emblem),
+.cinematic-intro--leaving .cinematic-intro__bottom { animation:cinemaTextExit .4s ease both; }
+.cinematic-intro--leaving .cinematic-intro__emblem--handed-off { opacity:0!important; visibility:hidden; animation:none; }
+.cinematic-logo-flight {
+  position:fixed; z-index:1101; pointer-events:none;
+  transform-style:preserve-3d;
+  transform:perspective(1100px) rotateY(-9deg) rotateX(6deg);
+  filter:drop-shadow(0 22px 30px rgba(32,103,255,.3));
+  transition:left 1.04s cubic-bezier(.18,.73,.22,1),top 1.04s cubic-bezier(.18,.73,.22,1),
+             width 1.04s cubic-bezier(.18,.73,.22,1),height 1.04s cubic-bezier(.18,.73,.22,1),
+             transform 1.04s cubic-bezier(.18,.73,.22,1);
+}
+.cinematic-logo-flight img {
+  position:absolute; inset:0; width:100%; height:100%; object-fit:contain;
+  transform:translateZ(calc((var(--layer) - 4) * 3.3px)) translateX(calc((4 - var(--layer)) * 1.05px));
+  filter:brightness(calc(.48 + var(--layer) * .07));
+}
+.cinematic-logo-flight img:last-child { filter:brightness(1.22) drop-shadow(0 0 18px rgba(74,160,255,.29)); }
+.cinematic-logo-flight--arriving { transform:perspective(1100px) rotateY(-19deg) rotateX(9deg); }
+@keyframes cinemaTextExit {to{opacity:0;filter:blur(11px);transform:translateY(-22px)}}
+
+/* Hold the copy until the reveal has fully finished. Then bring it up cinematically. */
+body:is(.intro-playing,.intro-handoff) .hero-copy > *,
+body:is(.intro-playing,.intro-handoff) .hero-ui,
+body:is(.intro-playing,.intro-handoff) .hero-primary-cta,
+body:is(.intro-playing,.intro-handoff) .hero-bottom-meta { opacity:0!important; visibility:hidden; }
+body:is(.intro-playing,.intro-handoff) .hero-logo-depth { opacity:0!important; animation:none!important; }
+body.intro-complete .hero-logo-depth { animation:none; }
+body.intro-complete .hero-copy > .hero-announcement { animation:landingRise .95s .18s both; }
+body.intro-complete .hero-copy > h1 { animation:landingRise 1.25s .46s both; }
+body.intro-complete .hero-copy > .hero-description { animation:landingRise 1.45s .84s both; }
+body.intro-complete .hero-ui--candidate { animation:landingCard .92s 1.16s both; }
+body.intro-complete .hero-ui--shortlist { animation:landingCard .92s 1.35s both; }
+body.intro-complete .hero-primary-cta { animation:landingCta .85s 1.68s both; }
+body.intro-complete .hero-bottom-meta { animation:landingRise .7s 1.8s both; }
+body.intro-complete .hero-primary-cta:is(:hover,:focus-visible) { animation:none; transform:translateX(-50%) translateY(-3px); }
+@keyframes landingRise { from{opacity:0;transform:translateY(34px);filter:blur(9px)} to{opacity:1;transform:translateY(0);filter:blur(0)} }
+@keyframes landingCard { from{opacity:0;filter:blur(7px) brightness(.8)} to{opacity:1;filter:blur(0) brightness(1)} }
+@keyframes landingCta { from{opacity:0;filter:blur(5px);transform:translate(-50%,23px)} to{opacity:1;filter:blur(0);transform:translate(-50%,0)} }
+@media (prefers-reduced-motion: reduce) {
+  body:is(.intro-playing,.intro-handoff) .hero-copy > *,body:is(.intro-playing,.intro-handoff) .hero-ui,
+  body:is(.intro-playing,.intro-handoff) .hero-primary-cta,body:is(.intro-playing,.intro-handoff) .hero-logo-depth,
+  body:is(.intro-playing,.intro-handoff) .hero-bottom-meta { opacity:1!important;visibility:visible; }
+  body.intro-complete .hero-copy > *,body.intro-complete .hero-ui,body.intro-complete .hero-primary-cta,
+  body.intro-complete .hero-bottom-meta { animation:none!important; }
+}
+
+@media (max-width:480px) and (max-height:740px) {
+ .hero-stage { height:890px!important; min-height:890px!important; }
+ .hero-scene { top:54%; }
+}

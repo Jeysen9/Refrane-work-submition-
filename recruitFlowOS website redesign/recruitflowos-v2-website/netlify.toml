@@ -1,0 +1,4 @@
+[build]
+  publish = "."
+
+# The site is static HTML/CSS/ES modules; no build command is required.

@@ -1,0 +1,50 @@
+/* OPENING FILM: the real company SVG is sculpted into a layered, perspective-rotating mark. */
+.cinematic-lock { overflow: hidden; }
+.cinematic-intro { position: fixed; z-index: 1000; inset: 0; display: grid; place-items: center; overflow: hidden; isolation: isolate; background: radial-gradient(ellipse at 51% 46%, #112342 0%, #070d1a 37%, #03060c 73%); color: #f5f9ff; animation: introAppear .32s ease both; }
+.cinematic-intro::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(173,201,255,.043) 1px, transparent 1px), linear-gradient(90deg, rgba(173,201,255,.043) 1px, transparent 1px); background-size: 92px 92px; mask-image: radial-gradient(ellipse at center, #000 5%, transparent 78%); }
+.cinematic-intro::after { content: ''; position: absolute; inset: 5.5% 3.5%; border: 1px solid rgba(205,225,255,.095); pointer-events: none; }
+.cinematic-intro__grain { position: absolute; inset: 0; pointer-events: none; opacity: .24; background: repeating-linear-gradient(0deg, transparent 0 2px, rgba(1,6,13,.24) 2px 3px); }
+.cinematic-intro__glow { position: absolute; width: min(65vw, 890px); aspect-ratio: 1; left: 50%; top: 46%; transform: translate(-50%,-50%); border-radius: 50%; filter: blur(60px); background: radial-gradient(circle, rgba(34,111,255,.21), rgba(6,21,55,.11) 48%, transparent 74%); animation: introGlow 3.8s ease-in-out both; }
+.cinematic-intro__vertical { position: absolute; z-index: 2; top: 50%; color: rgba(191,218,252,.32); font: 600 9px/1 var(--font-mono); letter-spacing: .3em; white-space: nowrap; }
+.cinematic-intro__vertical--left { left: 32px; writing-mode: vertical-rl; transform: translateY(-50%) rotate(180deg); }
+.cinematic-intro__vertical--right { right: 32px; writing-mode: vertical-rl; transform: translateY(-50%); }
+.cinematic-intro__content { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; width: min(92vw, 1000px); text-align: center; transform: translateY(-1.5%); }
+.cinematic-intro__kicker { margin-bottom: clamp(14px, 3vh, 34px); color: #7ea6df; font: 700 clamp(8px, .75vw, 11px)/1.3 var(--font-mono); letter-spacing: .4em; opacity: 0; animation: introTextIn .68s .23s both; }
+.cinematic-intro__emblem { position: relative; width: clamp(160px, 24vw, 295px); aspect-ratio: 1; transform-style: preserve-3d; perspective: 1000px; animation: introEmblem 2.6s .05s cubic-bezier(.13,.65,.24,1) both; filter: drop-shadow(1px 18px 22px rgba(25,97,255,.27)); }
+.cinematic-intro__logo-layer { position: absolute; display: block; inset: 0; width: 100%; height: 100%; object-fit: contain; backface-visibility: visible; transform: translateZ(calc((var(--layer) - 4) * 2px)) translateX(calc((4 - var(--layer)) * 1.15px)); filter: brightness(calc(.45 + var(--layer) * .085)); opacity: .97; }
+.cinematic-intro__logo-layer:last-child { filter: brightness(1.23) drop-shadow(0 0 18px rgba(75,147,255,.35)); }
+.cinematic-intro__wordmark { margin-top: clamp(6px, 2vh, 22px); font: 800 clamp(29px, 5.7vw, 75px)/.95 var(--font-display); letter-spacing: -.075em; white-space: nowrap; opacity: 0; animation: introTextIn .8s .82s both; }
+.cinematic-intro__wordmark span { font-weight: 400; color: #83bdff; }
+.cinematic-intro__rule { height: 1px; width: min(310px, 60vw); margin-top: clamp(18px, 3vh, 29px); background: rgba(206,225,255,.18); transform: scaleX(0); animation: introRule .8s 1.2s var(--ease-out) both; }
+.cinematic-intro__rule i { display: block; height: 1px; width: 52%; margin-inline: auto; background: #70b7ff; box-shadow: 0 0 12px rgba(90,155,255,.6); }
+.cinematic-intro__version { display: flex; align-items: baseline; gap: 13px; margin-top: 15px; opacity: 0; animation: introTextIn 1s 1.46s both; }
+.cinematic-intro__version span { color: #a7b9cf; font: 700 clamp(10px, 1.1vw, 13px)/1 var(--font-mono); letter-spacing: .33em; }
+.cinematic-intro__version strong { font: 800 clamp(39px, 7vw, 90px)/.9 var(--font-display); letter-spacing: -.09em; color: #eaf4ff; text-shadow: 0 0 38px rgba(107,184,255,.15); }
+.cinematic-intro__bottom { position: absolute; z-index: 5; bottom: clamp(28px, 6vh, 65px); left: 7%; right: 7%; display: flex; align-items: center; justify-content: space-between; gap: 26px; color: #7187a4; font: 600 9px/1.4 var(--font-mono); letter-spacing: .18em; }
+.cinematic-intro__progress { position: relative; display: block; width: clamp(60px, 18vw, 270px); height: 1px; background: rgba(175,199,236,.2); overflow: hidden; }
+.cinematic-intro__progress i { position: absolute; inset: 0; background: #79baff; transform-origin: left; animation: introRuleProgress 3.5s linear both; }
+.cinematic-intro__skip { border: 0; padding: 10px 0 10px 13px; color: #d4e4fb; background: transparent; font: 650 11px var(--font-body); letter-spacing: .01em; cursor: pointer; white-space: nowrap; }
+.cinematic-intro__skip span { color: #84c4ff; margin-left: 6px; }
+.cinematic-intro__skip:hover { color: #fff; }
+.cinematic-intro--leaving { pointer-events: none; animation: introLeave .7s cubic-bezier(.7,0,.95,.8) both; }
+.cinematic-intro--leaving .cinematic-intro__emblem { animation: introEmblemExit .7s ease-in both; }
+@keyframes introAppear { from { opacity: 0; } to { opacity: 1; } }
+@keyframes introTextIn { from { opacity: 0; transform: translateY(17px); filter: blur(7px); } to { opacity: 1; transform: translateY(0); filter: blur(0); } }
+@keyframes introGlow { from { opacity: .2; transform: translate(-50%,-50%) scale(.7); } to { opacity: 1; transform: translate(-50%,-50%) scale(1.1); } }
+@keyframes introEmblem { from { opacity: 0; transform: perspective(1100px) rotateY(-110deg) rotateX(28deg) scale(.7); } 50% { opacity: 1; } to { opacity: 1; transform: perspective(1100px) rotateY(-9deg) rotateX(6deg) scale(1); } }
+@keyframes introEmblemExit { to { transform: perspective(1000px) rotateY(55deg) rotateX(-10deg) scale(2); opacity: 0; filter: blur(9px); } }
+@keyframes introRule { to { transform: scaleX(1); } }
+@keyframes introRuleProgress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes introLeave { from { opacity: 1; } to { opacity: 0; } }
+@media (max-width: 620px) {
+ .cinematic-intro::after { inset: 14px; }
+ .cinematic-intro__vertical { display: none; }
+ .cinematic-intro__content { transform: translateY(-7%); }
+ .cinematic-intro__emblem { width: min(49vw,220px); }
+ .cinematic-intro__wordmark { font-size: clamp(27px, 8.2vw, 45px); }
+ .cinematic-intro__version { gap: 9px; }
+ .cinematic-intro__bottom { bottom: 25px; left: 29px; right: 29px; }
+ .cinematic-intro__bottom > span:first-child { display: none; }
+ .cinematic-intro__progress { flex: 1; width: auto; }
+}
+@media (prefers-reduced-motion: reduce) { .cinematic-intro { display: none; } }

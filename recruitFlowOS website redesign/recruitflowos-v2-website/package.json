@@ -1,0 +1,10 @@
+{
+  "name": "recruitflowos-v2-website",
+  "version": "2.4.0",
+  "private": true,
+  "type": "module",
+  "description": "Static, modular RecruitflowOS website redesign",
+  "scripts": {
+    "check": "node scripts/check-project.mjs"
+  }
+}

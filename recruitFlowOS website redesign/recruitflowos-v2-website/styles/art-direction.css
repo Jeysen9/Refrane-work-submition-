@@ -1,0 +1,151 @@
+/* RECRUITFLOW 2.2 | Editorial polish, atmospheric brand sculpture & inline scheduling.
+   Layered over the existing design system: page copy and workflow remain unchanged. */
+
+/* Brand motif continues beyond the opening hero, not an opaque wallpaper covering content. */
+#page-content { position: relative; }
+.ambient-section { position: relative; isolation: isolate; }
+.ambient-section > .ambient-identity { position: absolute !important; z-index: 0 !important; pointer-events: none; inset: 0; overflow: clip; }
+.ambient-section > :not(.ambient-identity) { position: relative; z-index: 1; }
+.ambient-identity__glow {
+  position: absolute; top: 40%; left: calc(50% + var(--ambient-offset,25%));
+  width: clamp(340px,65vw,900px); height: min(80%,690px);
+  transform: translate(-50%,-50%); opacity: .65;
+  background: radial-gradient(ellipse at center, rgba(49,117,238,.18),rgba(44,91,195,.09) 35%,rgba(93,59,191,.035) 56%,transparent 74%);
+  filter: blur(38px);
+}
+.ambient-identity__sculpture {
+  position: absolute; width: clamp(260px,47vw,710px); aspect-ratio: 1;
+  top: 47%; left: calc(50% + var(--ambient-offset,25%));
+  transform: translate(-50%, -50%) perspective(1200px) rotateY(var(--ambient-angle-enter,-23deg)) rotateX(9deg) rotateZ(-9deg) translateY(25px);
+  transform-style: preserve-3d; opacity: .015;
+  transition: transform 1.55s cubic-bezier(.17,.68,.28,1), opacity 1.65s ease;
+  filter: drop-shadow(14px 30px 20px rgba(20,85,216,.2));
+}
+.ambient-section.ambient-in-view .ambient-identity__sculpture {
+  transform: translate(-50%, -50%) perspective(1200px) rotateY(var(--ambient-angle,-19deg)) rotateX(6deg) rotateZ(-6deg) translateY(0);
+  opacity: .058;
+}
+.ambient-identity__sculpture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: .93;
+  transform: translateZ(calc((var(--depth-layer) - 2) * 7px)) translateX(calc((2 - var(--depth-layer)) * 2px));
+  filter: saturate(1.3) brightness(calc(.42 + var(--depth-layer) * .13));
+}
+.ambient-identity__sculpture img:last-child { filter: saturate(1.45) brightness(1.5) drop-shadow(0 0 16px rgba(69,153,255,.55)); }
+.ambient-section:nth-child(3n + 2) .ambient-identity__glow { background: radial-gradient(ellipse at center,rgba(108,76,239,.18),rgba(50,112,191,.08) 44%,transparent 74%); }
+.ambient-section:nth-child(3n + 3) .ambient-identity__glow { background: radial-gradient(ellipse at center,rgba(17,176,197,.15),rgba(27,92,187,.065) 45%,transparent 72%); }
+/* Page introductions use an even quieter symbol so headings remain dominant. */
+.page-hero.ambient-section.ambient-in-view .ambient-identity__sculpture { opacity:.045; top:53%; }
+/* Section-to-section light differences preserve a sense of distance without distracting text. */
+.problem-section,.process-section,.testimonials-section,.feature-details-wrap,.pricing-plans,.case-stories { background: transparent; }
+.demo-section { background: radial-gradient(ellipse at 20% 10%,rgba(47,115,244,.10),transparent 42%), linear-gradient(170deg,rgba(9,15,29,.96),rgba(7,13,24,.9) 70%,rgba(5,9,18,.97)); }
+.core-feature-section { background: radial-gradient(ellipse at 86% 20%,rgba(79,68,190,.13),transparent 38%),linear-gradient(180deg,rgba(10,16,30,.91),rgba(6,13,23,.96)); }
+.booking-section { background: radial-gradient(ellipse at 15% 5%,rgba(48,115,224,.13),transparent 44%),linear-gradient(135deg,rgba(10,22,42,.94),rgba(5,12,22,.97)); }
+.team-structure { background: radial-gradient(ellipse at 85% 26%,rgba(22,146,170,.11),transparent 53%),linear-gradient(180deg,#080f1b,#060a13); }
+.pricing-faq,.why-teams { background: radial-gradient(ellipse at 20% 35%,rgba(86,65,191,.10),transparent 42%),#070c17; }
+.additional-features { background: radial-gradient(ellipse at 82% 25%,rgba(33,132,216,.10),transparent 52%),rgba(5,12,23,.91); }
+.ambient-section::selection { color:#fff; background:#386ff0; }
+/* Section headings: typographic emphasis rather than recurring caption-plus-dash template. */
+.section-heading { gap: 15px; }
+.section-heading h2 { letter-spacing: -.055em; }
+.section-heading::after { content:""; order: 2; margin-top: 1px; width: clamp(58px,8vw,103px); height: 3px; border-radius: 9px;
+  background:linear-gradient(90deg,#348afc,#81ccff 52%,rgba(104,126,235,0)); box-shadow:0 4px 22px rgba(49,127,250,.2); }
+.section-heading > p { order: 3; }
+.section-heading--center::after { align-self:center; }
+.eyebrow { font-family: var(--font-body); font-size: 13px; font-weight: 700; letter-spacing: 0; text-transform: none; color:#afd7ff; }
+.eyebrow::before { width: 7px; height: 12px; border-radius: 7px 2px 7px 2px; transform: rotate(-18deg);
+  background:linear-gradient(180deg,#8bd7ff,#5d6bf5); box-shadow:0 0 18px rgba(91,147,243,.3); }
+/* Functional details stay. Decorative labels and tiny counters are removed in markup. */
+.hero-announcement { font-family: var(--font-body); font-size: 12px; font-weight: 680; letter-spacing: 0; border-color:rgba(124,196,255,.25);
+  background:linear-gradient(105deg,rgba(34,89,190,.18),rgba(88,56,181,.12)); }
+.hero-scroll-note { font-family:var(--font-body); font-size:11px; letter-spacing:0; text-transform:none; color:#94a8c4; }
+.feature-detail__eyebrow,.story-label,.process-step__tag,.story-summary__metrics > div > span,.story-metric span,.plan-tier,.segment-status {
+  font-family: var(--font-body); font-size: max(11px, .73rem); letter-spacing: 0; text-transform: none;
+}
+.feature-detail__eyebrow { color:#b4d9ff; }
+.story-summary__metrics > div > span,.story-metric span { color:#abc0db; }
+.shortlist-foot { font-size:10px; color:#a6b3c6; }
+.hero-replay { font-size:11px; }
+/* More life: highlights migrate through indigo, aqua and warm gold across glass components. */
+.feature-card:nth-child(3n+2),.additional-feature:nth-child(3n+2) {
+  border-color:rgba(159,139,242,.25);
+  background:linear-gradient(142deg,rgba(52,42,90,.42),rgba(18,27,49,.83) 61%,rgba(8,15,29,.93));
+}
+.feature-card:nth-child(3n+3),.additional-feature:nth-child(3n+3) {
+  border-color:rgba(80,198,205,.22);
+  background:linear-gradient(142deg,rgba(16,67,74,.34),rgba(15,31,51,.77) 61%,rgba(8,16,30,.93));
+}
+.feature-card:nth-child(3n+2) .feature-mark,.additional-feature:nth-child(3n+2) .feature-mark { color:#cbadff; background:rgba(119,77,216,.19); border-color:rgba(172,133,255,.28); }
+.feature-card:nth-child(3n+3) .feature-mark,.additional-feature:nth-child(3n+3) .feature-mark { color:#8ce5e3; background:rgba(19,148,152,.16); border-color:rgba(73,200,201,.24); }
+.feature-card:hover,.additional-feature:hover { border-color:rgba(132,193,255,.55); }
+.process-step:nth-child(3n+2) .process-step__marker span { color:#c0aaff; }
+.process-step:nth-child(3n+3) .process-step__marker span { color:#87e2d9; }
+.testimonial-card:nth-child(3n+2) { background:linear-gradient(145deg,rgba(44,35,86,.59),rgba(12,18,32,.96)); border-color:rgba(155,139,240,.25); }
+.testimonial-card:nth-child(3n+3) { background:linear-gradient(145deg,rgba(18,62,69,.59),rgba(11,21,35,.96)); border-color:rgba(84,183,204,.25); }
+.testimonial-card:nth-child(3n+2) .testimonial-card__quote-mark { color:#c0a6ff; }
+.testimonial-card:nth-child(3n+3) .testimonial-card__quote-mark { color:#73d5ce; }
+.plan-card--popular { background:radial-gradient(ellipse at 88% 0%,rgba(85,69,206,.3),transparent 58%),linear-gradient(153deg,rgba(27,56,104,.91),rgba(9,16,30,.97)); }
+.button--primary { background:linear-gradient(115deg,#155bea,#2c80fb 65%,#5597f5); border-color:rgba(123,190,255,.32);
+  box-shadow:0 14px 36px rgba(21,90,235,.23),inset 0 1px rgba(255,255,255,.19); }
+.button--primary:hover { background:linear-gradient(115deg,#2c70fa,#479cf5 60%,#5370f2); }
+/* No auto-scrolling, animated moving strip below hero. */
+.chapter-bridge { display:none !important; }
+/* CTA is given its own low position so the logo is no longer behind the button. */
+.hero-pin { position:relative; z-index:1; }
+@media (min-width:761px) {
+  .hero-scene { top:40%; }
+  .hero-primary-cta { bottom:18px!important; }
+}
+.hero-stage { position:sticky; }
+.hero-primary-cta { position:absolute; z-index:12; left:50%; bottom: clamp(55px,8.4vh,89px); transform:translateX(-50%);
+  margin-top:0; white-space:nowrap; justify-content:center; min-width:190px; }
+.hero-primary-cta:hover { transform:translateX(-50%) translateY(-3px); }
+.hero-copy { padding-bottom:0; }
+.hero-copy > p { margin-bottom:0; }
+/* Mobile calendar is part of the same glass card, including iOS and Android. */
+.booking-calendar { position:relative; min-width:0; width:100%; min-height:770px; background:rgba(5,11,22,.43); }
+.booking-calendly { position:relative; width:100%; min-width:320px; min-height:770px; height:770px; }
+.booking-calendly iframe,.booking-fallback-iframe { display:block; width:100%; height:100%; min-height:770px; border:0; background:#0b1325; }
+.booking-calendar__loading { position:absolute; left:0; right:0; top:0; display:flex; flex-direction:column; align-items:center; gap:15px;
+  justify-content:center; height: min(48vw,350px); min-height:200px; color:#aac7ea; font-size:14px; }
+.booking-calendar__loading[hidden] { display:none!important; }
+.booking-calendar__spinner { display:block; width:27px; height:27px; border-radius:50%; border:2px solid rgba(108,183,255,.18); border-top-color:#75c6ff; animation:bookingSpinner .9s linear infinite; }
+@keyframes bookingSpinner {to{transform:rotate(360deg)}}
+.booking-calendar--offline .booking-calendar__loading { display:flex; z-index:2; background:linear-gradient(#0a1425,transparent); }
+.booking-fallback { background:rgba(21,43,73,.42); }
+.booking-fallback span,.booking-fallback .text-link { font-family:var(--font-body); font-size:12px; }
+.booking-fallback .text-link { color:#9bd7ff; }
+@media (max-width:900px) {
+  .ambient-identity__sculpture { width:clamp(320px,58vw,520px); }
+}
+@media (max-width:760px) {
+  .booking-mobile-access { display:none!important; }
+  .booking-iframe { display:block!important; }
+  .booking-calendar { min-height:920px; }
+  .booking-calendly { min-height:920px; height:920px; }
+  .booking-calendly iframe,.booking-fallback-iframe { min-height:920px; }
+  .hero-stage { min-height:800px !important; height:800px !important; }
+  .hero-scene { top:41%; height:39%; }
+  .hero-ui--shortlist { top:45%; }
+  .hero-primary-cta { bottom:62px; min-height:49px; }
+  .hero-bottom-meta { bottom:13px; }
+  .hero-copy { padding-top:22px; }
+  .ambient-identity__sculpture { width:clamp(280px,85vw,470px); left:calc(50% + var(--ambient-offset-small,19%)); }
+  .ambient-identity__glow { left:calc(50% + var(--ambient-offset-small,19%)); }
+  .section-heading h2 { max-width:18ch; }
+  .section-heading::after { height:3px; }
+}
+@media (max-width:420px) {
+  /* Calendly's 320px minimum: give the calendar true edge-to-edge width on narrow screens. */
+  .booking-panel { width:100vw!important; max-width:100vw; margin-left:calc(50% - 50vw)!important; border-left:0!important; border-right:0!important; border-radius:0!important; }
+  .booking-calendly { min-width:320px; width:100%; }
+  .booking-panel__label { padding-inline:15px; }
+  .booking-fallback { padding-inline:14px; }
+  .hero-scene { top:41%; height:39%; }
+  .hero-ui--shortlist { top:45%; }
+  .hero-logo-depth { top:38%; }
+  .hero-primary-cta { bottom:62px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .ambient-identity__sculpture { opacity:.065; transform:translate(-50%,-50%) perspective(1200px) rotateY(-16deg) rotateX(6deg); transition:none; }
+  .booking-calendar__spinner { animation:none; }
+  .hero-primary-cta:hover { transform:translateX(-50%); }
+}
